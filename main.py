@@ -1,3 +1,4 @@
+import os
 from typing import Annotated
 
 from contextlib import asynccontextmanager
@@ -34,6 +35,8 @@ async def lifespan(_app: FastAPI):
     await engine.dispose()
 
 app = FastAPI(lifespan = lifespan)
+
+os.makedirs("media", exist_ok=True)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/media", StaticFiles(directory="media"), name="media")
