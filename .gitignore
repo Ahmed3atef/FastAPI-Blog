@@ -10,4 +10,11 @@ wheels/
 .venv
 .vscode
 
+# Database files
 *.db
+
+# env files
+.env
+
+# Deployment files
+.fastapicloud
