@@ -161,7 +161,7 @@ async def forgot_password_page(request: Request):
         {"title": "Forgot Password"},
     )
 
-@app.exception_handler(StarletteHTTPException)
+
 @app.get("/reset-password", include_in_schema=False)
 async def reset_password_page(request: Request):
     response = templates.TemplateResponse(
@@ -172,7 +172,7 @@ async def reset_password_page(request: Request):
     response.headers["Referrer-Policy"] = "no-referrer"
     return response
 
-
+@app.exception_handler(StarletteHTTPException)
 async def general_http_exception_handler(request: Request, exception: StarletteHTTPException):
     if request.url.path.startswith("/api"):
         return await http_exception_handler(request, exception)
