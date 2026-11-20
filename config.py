@@ -7,6 +7,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    
+    database_url: str
 
     secret_key: SecretStr # python -c "import secrets; print(secrets.token_hex(32))" this will get from the .env file
     algorithm: str = "HS256"
